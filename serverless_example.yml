@@ -1,0 +1,18 @@
+service: show-today-tasks-lambda
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stage: api
+  region: ap-northeast-1
+  environment:
+   CURRENT_LIST_ID: XXXXXXXXXX
+   FINISHED_LIST_ID: XXXXXXXXXX
+   API_KEY: XXXXXXXXXX
+   API_TOKEN: XXXXXXXXXX
+
+functions:
+  show-today-tasks-lambda:
+    handler: handler.fulfillment
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
